@@ -18,10 +18,6 @@ class IsAdminUser(permissions.BasePermission):
     def has_object_permission(self, request: Request, view: View):
         return request.user.is_admin
     
-class IsAdminUserNoObject(permissions.BasePermission):
-    def has_permission(self, request: Request, view: View):
-        return request.user.is_admin
-    
 class IsOwner(permissions.BasePermission):
     def has_object_permission(self, request: Request, view: View, obj):
         return request.user == obj
