@@ -9,11 +9,12 @@ class IsAdminOrReadOnly(permissions.BasePermission):
             or request.user.is_authenticated
             and request.user.is_admin
         )
-    
+
 class IsAdminOrOwner(permissions.BasePermission):
     def has_object_permission(self, request: Request, view: View, obj):
         return request.user.is_admin or request.user == obj
-    
+
+
 class IsAdminUser(permissions.BasePermission):
     def has_object_permission(self, request: Request, view: View):
         return request.user.is_admin
@@ -21,7 +22,7 @@ class IsAdminUser(permissions.BasePermission):
 class IsAdminUserNoObject(permissions.BasePermission):
     def has_permission(self, request: Request, view: View):
         return request.user.is_admin
-    
+
 class IsOwner(permissions.BasePermission):
     def has_object_permission(self, request: Request, view: View, obj):
         return request.user == obj
